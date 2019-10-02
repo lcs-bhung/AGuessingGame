@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     //MARK: properties
     let targetNumber = Int.random(in: 1...100)
 
+    @IBOutlet weak var SubmittedGuess: UITextField!
     //Mark: Initializers
     
     
@@ -37,9 +38,22 @@ class ViewController: UIViewController {
         //Speak the message
         synthesizer.speak(utterance)
         
+        //Report to the target number to the console for testing purpouses
+        print("For testing puropuses, the random number is/(targetNumber)")
+        
         
     }
 
-
+    //This function will be used to check the guess
+    @IBAction func CheckGuess(_ sender: Any) {
+        
+        //obtan the gues value from the text field
+        let guessText = SubmittedGuess.text!
+        let guessNumber = Int(guessText)!
+        
+        //For testing purpouses what was the guess?
+        print("For testing purpouses, the random number is /(guessNumber)")
+    }
+    
 }
 
