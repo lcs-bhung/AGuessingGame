@@ -12,7 +12,7 @@ import AVFoundation
 class ViewController: UIViewController {
 
     //MARK: properties
-    
+    let targetNumber = Int.random(in: 1...100)
 
     //Mark: Initializers
     
