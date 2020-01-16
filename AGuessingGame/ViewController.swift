@@ -10,10 +10,10 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
+    
     //MARK: properties
     let targetNumber = Int.random(in: 1...100)
-
+    
     //Mark: Initializers
     @IBOutlet weak var submittedGuess: UITextField!
     
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         
         // Make an object named 'synthesizer' , which is an instance of the class 'AVSpeechSynthesizer'
         let synthesizer = AVSpeechSynthesizer()
-
+        
         //make a string the computer wants to say
         let message = "I'm thinking of a number between 1 and 100. Guess what it is"
         
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     //This function will be used to check the guess
     @IBAction func CheckGuess(_ sender: Any) {
         
@@ -56,22 +56,30 @@ class ViewController: UIViewController {
         
         //Give apropriate feedback to the user
         if guessNumber > targetNumber {
-        print ("Guess lower next time")
-            
-            
+            print ("Guess lower next time")
+            // Make an object named 'synthesizer' , which is an instance of the class 'AVSpeechSynthesizer'
+            speak(this: "Guess Lower Next time")
             
         } else if guessNumber < targetNumber {
-            print("Guess higher next time")
-            
+           speak(this: "Guess higher next time")
             
             
         } else{
-            print("You are correct!")
-            
+            speak(this: "You are correct!")
             
             
         }
     }
-    
+    func speak(this message:String) {
+        let synthesizer = AVSpeechSynthesizer()
+        
+        //make a string the computer wants to say
+       
+        //make an object named 'utterance' which is an instance of the class 'VSDpeechSynthesizer
+        let utterance = AVSpeechUtterance(string: message)
+        
+        //Speak the message
+        synthesizer.speak(utterance)
+    }
 }
 
